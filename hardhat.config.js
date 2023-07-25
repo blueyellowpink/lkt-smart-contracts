@@ -26,13 +26,13 @@ module.exports = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {},
-        bsc_testnet: {
+        testnet: {
             url: "https://data-seed-prebsc-1-s1.binance.org:8545",
             chainId: 97,
             gasPrice: 20000000000,
             accounts: [process.env.TESTNET_PRIVATE_KEY],
         },
-        bsc_mainnet: {
+        mainnet: {
             url: "https://bsc-dataseed.binance.org/",
             chainId: 56,
             gasPrice: 20000000000,

@@ -8,7 +8,12 @@ const hre = require("hardhat")
 
 async function main() {
     const LKT = await hre.ethers.getContractFactory("Token");
-    const lkt = await LKT.deploy();
+    const params = {
+        name: 'LuxKingToken',
+        symbol: 'LKT',
+        amount: 80000000,
+    }
+    const lkt = await LKT.deploy(params.name, params.symbol, params.amount);
 
     await lkt.deployed();
 
