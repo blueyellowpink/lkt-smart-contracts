@@ -13,7 +13,16 @@ require("./tasks")
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-    solidity: "0.8.19",
+    solidity: {
+        compilers: [
+            {
+                version: '0.8.0',
+            },
+            // {
+            //     version: '0.8.9',
+            // },
+        ],
+    },
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {},
