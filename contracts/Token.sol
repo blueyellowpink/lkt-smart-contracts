@@ -733,7 +733,7 @@ pragma solidity ^0.8.0;
 
 contract Token is ERC20, ERC20Burnable, Pausable, Ownable {
     constructor() ERC20('Token', 'TKN') {
-        _mint(msg.sender, 500000000 * 10 ** decimals());
+        _mint(msg.sender, 80000000 * 10 ** decimals());
     }
 
     function pause() public onlyOwner {

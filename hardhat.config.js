@@ -1,10 +1,10 @@
-require("@nomicfoundation/hardhat-toolbox");
+// require("@nomicfoundation/hardhat-toolbox");
 
 require("dotenv").config({ path: ".env" });
 require("dotenv").config({ path: ".env.secret" });
 
 // require("@nomiclabs/hardhat-waffle");
-// require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-ethers");
 // require("@nomiclabs/hardhat-etherscan");
 
 
