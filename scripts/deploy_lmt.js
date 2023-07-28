@@ -9,9 +9,9 @@ const hre = require("hardhat")
 async function main() {
     const Token = await hre.ethers.getContractFactory("Token");
     const params = {
-        name: 'LuxKingTech',
-        symbol: 'LKT',
-        amount: 80000000,
+        name: 'LuxMartLoyaltyPoints',
+        symbol: 'LMT',
+        amount: 120000000,
     }
     const token = await Token.deploy(params.name, params.symbol, params.amount);
 

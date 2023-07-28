@@ -1,5 +1,5 @@
 const { task, subtask, types } = require("hardhat/config")
 
-// require('./buy.js')
+require('./token.js')
 
 module.exports = {}
