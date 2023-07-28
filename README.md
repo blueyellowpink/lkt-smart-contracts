@@ -1,13 +1,31 @@
-# Sample Hardhat Project
+# LKT
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Requirements
+- Node v16.16.0
 
-Try running some of the following tasks:
+## Install deps
+```bash
+yarn
+```
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+## Deploy contracts to BSC Testnet
+- Deploy LKT
+```bash
+yarn run hardhat run scripts/deploy_lkt.js --network testnet
+```
+
+- Deploy LMT
+```bash
+yarn run hardhat run scripts/deploy_lmt.js --network testnet
+```
+
+## Deploy contracts to BSC Mainnet
+- Deploy LKT
+```bash
+yarn run hardhat run scripts/deploy_lkt.js --network mainnet
+```
+
+- Deploy LMT
+```bash
+yarn run hardhat run scripts/deploy_lmt.js --network mainnet
 ```
