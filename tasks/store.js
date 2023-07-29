@@ -3,7 +3,7 @@ const { parseEtherArray } = require("../utils")
 
 const storeAbi = require("../artifacts/contracts/Store.sol/Store.json").abi
 
-task("set-price-store", "Set price for NFT in store").setAction(async (args, hre) => {
+task("store-set-price", "Set price for NFT in store").setAction(async (args, hre) => {
     const { Store } = require(`../bsc_${hre.network.name}_addresses.json`)
     const signer = await ethers.getSigner()
     const store = new ethers.Contract(Store, storeAbi, signer)
@@ -17,7 +17,7 @@ task("set-price-store", "Set price for NFT in store").setAction(async (args, hre
     console.log('done')
 })
 
-task("set-quant-store", "Set quantity for NFT in store").setAction(async (args, hre) => {
+task("store-set-quant", "Set quantity for NFT in store").setAction(async (args, hre) => {
     const { Store } = require(`../bsc_${hre.network.name}_addresses.json`)
     const signer = await ethers.getSigner()
     const store = new ethers.Contract(Store, storeAbi, signer)
