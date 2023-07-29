@@ -5,19 +5,27 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat")
+const fs = require("fs")
 
 async function main() {
-    const Token = await hre.ethers.getContractFactory("Token")
+    const path = `bsc_${hre.network.name}_addresses.json`
+    let address = JSON.parse(fs.readFileSync(path))
+
+    const Contract = await hre.ethers.getContractFactory("Store")
     const params = {
-        name: "LuxMartLoyaltyPoints",
-        symbol: "LMT",
-        amount: 120000000,
+        tokenAddress: address.LKT,
+        nftAddress: address.KAN,
     }
-    const token = await Token.deploy(params.name, params.symbol, params.amount)
+    const contract = await Contract.deploy(
+        params.tokenAddress,
+        params.nftAddress
+    )
 
-    await token.deployed()
+    await contract.deployed()
 
-    console.log("Token deployed to: ", token.address)
+    address.Store = contract.address
+    fs.writeFileSync(path, JSON.stringify(address, null, 4))
+    console.log("Contract deployed to: ", contract.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -1,22 +1,20 @@
 // require("@nomicfoundation/hardhat-toolbox");
 
-require("dotenv").config({ path: ".env" });
-require("dotenv").config({ path: ".env.secret" });
+require("dotenv").config({ path: ".env" })
+require("dotenv").config({ path: ".env.secret" })
 
 // require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-ethers")
 // require("@nomiclabs/hardhat-etherscan");
 
-
 require("./tasks")
-
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
     solidity: {
         compilers: [
             {
-                version: '0.8.0',
+                version: "0.8.0",
             },
             // {
             //     version: '0.8.9',
@@ -37,7 +35,8 @@ module.exports = {
             chainId: 56,
             // gasPrice: 20000000000,
             accounts: [
-                process.env.MAINNET_PRIVATE_KEY ?? process.env.TESTNET_PRIVATE_KEY,
+                process.env.MAINNET_PRIVATE_KEY ??
+                    process.env.TESTNET_PRIVATE_KEY,
             ],
         },
     },
@@ -46,4 +45,4 @@ module.exports = {
         // Obtain one at https://etherscan.io/
         apiKey: process.env.BSCSCAN_API_KEY,
     },
-};
+}
