@@ -34,11 +34,11 @@ const provider = new ethers.providers.Web3Provider(connection)
 
 // get signer from metamask
 const signer = provider.getSigner()
-const signerAddress = await signer.getAddress()
+// const signerAddress = await signer.getAddress()
 
 // create a contract
-const tokenContract = new ethers.Contract(address.LKT, tokenAbi, provider)
-const storeContract = new ethers.Contract(address.Store, storeAbi, provider)
+const tokenContract = new ethers.Contract(address.LKT, tokenAbi, signer)
+const storeContract = new ethers.Contract(address.Store, storeAbi, signer)
 
 const buyNFT = async () => {
     const allowance = await tokenContract.allowance(
