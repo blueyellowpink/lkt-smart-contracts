@@ -2,13 +2,18 @@ const ethers = require('ethers')
 const keccak256 = require('keccak256')
 const minterBytes32 = '0x' + keccak256('MINTER_ROLE').toString('hex')
 
-// exports.formatEther = ( bigNumber ) => ethers.utils.formatEther(bigNumber)
+exports.unlimitedAllowance =
+    '115792089237316195423570985008687907853269984665640564039457584007913129639935'
 
-// exports.parseEther = ( string ) => ethers.utils.parseEther(string)
+exports.formatEther = ( bigNumber ) => ethers.utils.formatEther(bigNumber)
+exports.parseEther = ( string ) => ethers.utils.parseEther(string)
 
-exports.parseEtherArray = ( array ) => {
+exports.formatLkt = (string) => ethers.utils.formatUnits(string, 6)
+exports.parseLkt = (string) => ethers.utils.parseUnits(string, 6)
+
+exports.parseLktArray = ( array ) => {
     // i should be number
-    return array.map(i => ethers.utils.parseEther(i.toString()))
+    return array.map(i => ethers.utils.parseUnits(i.toString(), 6))
 }
 
 exports.setMinter = async (contract, address) => {
