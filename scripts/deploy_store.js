@@ -15,11 +15,11 @@ async function main() {
     const Contract = await hre.ethers.getContractFactory("Store")
     const params = {
         tokenAddress: address.LKT,
-        nftAddress: address.KAN,
+        kanAddress: address.KAN,
     }
     const contract = await Contract.deploy(
         params.tokenAddress,
-        params.nftAddress
+        params.kanAddress
     )
 
     await contract.deployed()

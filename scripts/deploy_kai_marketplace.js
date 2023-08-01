@@ -11,19 +11,19 @@ async function main() {
     const path = `bsc_${hre.network.name}_addresses.json`
     let address = JSON.parse(fs.readFileSync(path))
 
-    const Contract = await hre.ethers.getContractFactory("Marketplace")
+    const Contract = await hre.ethers.getContractFactory("KaiMarketplace")
     const params = {
         tokenAddress: address.LKT,
-        kanAddress: address.KAN,
+        kaiAddress: address.KAI,
     }
     const contract = await Contract.deploy(
         params.tokenAddress,
-        params.kanAddress
+        params.kaiAddress
     )
 
     await contract.deployed()
 
-    address.Marketplace = contract.address
+    address.KaiMarketplace = contract.address
     fs.writeFileSync(path, JSON.stringify(address, null, 4))
     console.log("Contract deployed to: ", contract.address)
 }
