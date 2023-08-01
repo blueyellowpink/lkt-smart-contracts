@@ -6,31 +6,28 @@
 // global scope, and execute the script.
 const hre = require("hardhat")
 const fs = require("fs")
-const { setMinter } = require("../utils")
 
 async function main() {
     const path = `bsc_${hre.network.name}_addresses.json`
     let address = JSON.parse(fs.readFileSync(path))
 
-    const Contract = await hre.ethers.getContractFactory("Store")
+    const Contract = await hre.ethers.getContractFactory("UserInfo")
     const params = {
         tokenAddress: address.LKT,
-        nftAddress: address.KAN,
+        kanAddress: address.KAN,
+        kaiAddress: address.KAI,
     }
     const contract = await Contract.deploy(
         params.tokenAddress,
-        params.nftAddress
+        params.kanAddress,
+        params.kaiAddress,
     )
 
     await contract.deployed()
 
-    address.Store = contract.address
+    address.UserInfo = contract.address
     fs.writeFileSync(path, JSON.stringify(address, null, 4))
     console.log("Contract deployed to: ", contract.address)
-
-    const KAN = await hre.ethers.getContractFactory("KingAnimalNFT")
-    await setMinter(KAN, address.Store)
-    console.log('KAN set Store as minter')
 }
 
 // We recommend this pattern to be able to use async/await everywhere
