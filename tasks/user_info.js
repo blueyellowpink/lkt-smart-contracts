@@ -1,14 +1,26 @@
 const { task, types } = require("hardhat/config")
-const { unlimitedAllowance, parseLktArray, parseLkt } = require("../utils")
+const { toUserInfo, parseLkt } = require("../utils")
 
-const marketplaceAbi = require("../artifacts/contracts/Marketplace.sol/Marketplace.json").abi
-const kanAbi = require("../artifacts/contracts/KingAnimalNFT.sol/KingAnimalNFT.json").abi
+const userInfoAbi = require("../artifacts/contracts/UserInfo.sol/UserInfo.json").abi
 
 task("user-kan", "Get KANs").setAction(async (args, hre) => {
-    const { KAN } = require(`../bsc_${hre.network.name}_addresses.json`)
+    const { UserInfo } = require(`../bsc_${hre.network.name}_addresses.json`)
     const signer = await ethers.getSigner()
-    const marketplace = new ethers.Contract(Marketplace, marketplaceAbi, signer)
-    const kan = new ethers.Contract(KAN, kanAbi, signer)
+    const userInfo = new ethers.Contract(UserInfo, userInfoAbi, signer)
+
+    const nfts = await userInfo.getUserNft(await signer.getAddress())
+    console.log(toUserInfo(nfts))
+
+    console.log('done')
+})
+
+task("user-kai", "Get KAIs").setAction(async (args, hre) => {
+    const { UserInfo } = require(`../bsc_${hre.network.name}_addresses.json`)
+    const signer = await ethers.getSigner()
+    const userInfo = new ethers.Contract(UserInfo, userInfoAbi, signer)
+
+    const nfts = await userInfo.getUserItem(await signer.getAddress())
+    console.log(toUserInfo(nfts))
 
     console.log('done')
 })

@@ -21,3 +21,22 @@ exports.setMinter = async (contract, address) => {
     await set.wait()
     return set
 }
+
+exports.toUserInfo = (items) => {
+    if (items.length == 0) return []
+
+    const tokenIds = items[0]
+    const itemIds = items[1]
+    const uris = items[2]
+
+    const userInfos = []
+    for (let i = 0; i < tokenIds.length; i++) {
+        userInfos.push({
+            tokenId: tokenIds[i],
+            itemId: itemIds[i],
+            uri: uris[i]
+        })
+    }
+
+    return userInfos
+}
