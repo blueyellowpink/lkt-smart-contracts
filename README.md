@@ -37,3 +37,9 @@ yarn run hardhat run scripts/deploy_lkt.js --network mainnet
 ```bash
 yarn run hardhat run scripts/deploy_lmt.js --network mainnet
 ```
+
+## Deploy order
+1. LKT, LMT
+2. KAI, KAN
+3. UserInfo
+4. Store, Marketplace, KaiStore, KaiMarketplace
