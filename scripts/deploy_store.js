@@ -8,27 +8,29 @@ const hre = require("hardhat")
 const fs = require("fs")
 const { setMinter } = require("../utils")
 
+const kanAbi = require("../artifacts/contracts/KingAnimalNFT.sol/KingAnimalNFT.json").abi
+
 async function main() {
     const path = `bsc_${hre.network.name}_addresses.json`
     let address = JSON.parse(fs.readFileSync(path))
 
-    const Contract = await hre.ethers.getContractFactory("Store")
-    const params = {
-        tokenAddress: address.LKT,
-        kanAddress: address.KAN,
-    }
-    const contract = await Contract.deploy(
-        params.tokenAddress,
-        params.kanAddress
-    )
+    // const Contract = await hre.ethers.getContractFactory("Store")
+    // const params = {
+    //     tokenAddress: address.LKT,
+    //     kanAddress: address.KAN,
+    // }
+    // const contract = await Contract.deploy(
+    //     params.tokenAddress,
+    //     params.kanAddress
+    // )
+    //
+    // await contract.deployed()
+    //
+    // address.Store = contract.address
+    // fs.writeFileSync(path, JSON.stringify(address, null, 4))
+    // console.log("Contract deployed to: ", contract.address)
 
-    await contract.deployed()
-
-    address.Store = contract.address
-    fs.writeFileSync(path, JSON.stringify(address, null, 4))
-    console.log("Contract deployed to: ", contract.address)
-
-    const KAN = await hre.ethers.getContractFactory("KingAnimalNFT")
+    const KAN = new hre.ethers.Contract(address.KAN, kanAbi, await hre.ethers.getSigner())
     await setMinter(KAN, address.Store)
     console.log('KAN set Store as minter')
 }
