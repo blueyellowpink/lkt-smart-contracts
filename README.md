@@ -45,6 +45,8 @@ yarn run hardhat run scripts/deploy_lmt.js --network mainnet
 4. Store, Marketplace, KaiStore, KaiMarketplace
 
 ## Verify contract
+- Go to `https://bscscan.com/`, create an account and create a new API Key
+- Replace the `BSCSCAN_API_KEY` in `.env` file with the new API key
 - Check and run `verify_token.sh` file
 ```bash
 ./verify_token.sh
