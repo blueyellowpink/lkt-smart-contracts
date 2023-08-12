@@ -43,3 +43,9 @@ yarn run hardhat run scripts/deploy_lmt.js --network mainnet
 2. KAI, KAN
 3. UserInfo
 4. Store, Marketplace, KaiStore, KaiMarketplace
+
+## Verify contract
+- Check and run `verify_token.sh` file
+```bash
+./verify_token.sh
+```
