@@ -2,6 +2,6 @@
 
 NETWORK=testnet
 ARGS=arguments_lkt.js
-ADDRESS=0x74B7ECea44fA802eBE3a6a1Cf312159578E7Dedc
+ADDRESS=0xfb4488AF459Ddd56CaBbC5F8544Fc2E3cb840d2A
 
 yarn run hardhat verify --network $NETWORK --constructor-args ./verify/$ARGS --no-compile $ADDRESS

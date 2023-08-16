@@ -21,7 +21,7 @@ async function main() {
 
     await token.deployed()
 
-    address.LMT = contract.address
+    address.LMT = token.address
     fs.writeFileSync(path, JSON.stringify(address, null, 4))
     console.log("Token deployed to: ", token.address)
 }
