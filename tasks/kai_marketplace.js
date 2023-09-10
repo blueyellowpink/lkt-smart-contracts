@@ -4,7 +4,7 @@ const { unlimitedAllowance, parseLktArray, parseLkt } = require("../utils")
 const marketplaceAbi = require("../artifacts/contracts/Marketplace.sol/Marketplace.json").abi
 const kanAbi = require("../artifacts/contracts/KingAnimalNFT.sol/KingAnimalNFT.json").abi
 
-task("market-sell", "Sell NFT on marketplace").setAction(async (args, hre) => {
+task("kai-market-sell", "Sell NFT on marketplace").setAction(async (args, hre) => {
     const { Marketplace, KAN } = require(`../bsc_${hre.network.name}_addresses.json`)
     const signer = await ethers.getSigner()
     const marketplace = new ethers.Contract(Marketplace, marketplaceAbi, signer)

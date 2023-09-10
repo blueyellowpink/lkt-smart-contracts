@@ -40,3 +40,19 @@ exports.toUserInfo = (items) => {
 
     return userInfos
 }
+
+exports.Sale = (items) => {
+    const sales = []
+
+    for (let i = 0; i < items.saleIds.length; i++) {
+        sales.push({
+            saleId: items.saleIds[i].toString(),
+            tokenId: items.tokenIds[i].toString(),
+            seller: items.sellers[i],
+            price: this.formatLkt(items.prices[i].toString()),
+            lastUpdated: items.lastUpdateds[i].toString(),
+        })
+    }
+
+    return sales
+}
