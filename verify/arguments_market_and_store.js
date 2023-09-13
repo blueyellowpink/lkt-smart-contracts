@@ -1,0 +1,4 @@
+module.exports = [
+    "0x74B7ECea44fA802eBE3a6a1Cf312159578E7Dedc", // LKT
+    "0x49f6c38D2e90b05171D886B5Bf6097bA0f7b038A", // KAN
+];

@@ -14,25 +14,25 @@ async function main() {
     const path = `bsc_${hre.network.name}_addresses.json`
     let address = JSON.parse(fs.readFileSync(path))
 
-    // const Contract = await hre.ethers.getContractFactory("Store")
-    // const params = {
-    //     tokenAddress: address.LKT,
-    //     kanAddress: address.KAN,
-    // }
-    // const contract = await Contract.deploy(
-    //     params.tokenAddress,
-    //     params.kanAddress
-    // )
-    //
-    // await contract.deployed()
-    //
-    // address.Store = contract.address
-    // fs.writeFileSync(path, JSON.stringify(address, null, 4))
-    // console.log("Contract deployed to: ", contract.address)
+    const Contract = await hre.ethers.getContractFactory("Store")
+    const params = {
+        tokenAddress: address.LKT,
+        kanAddress: address.KAN,
+    }
+    const contract = await Contract.deploy(
+        params.tokenAddress,
+        params.kanAddress
+    )
 
-    const KAN = new hre.ethers.Contract(address.KAN, kanAbi, await hre.ethers.getSigner())
-    await setMinter(KAN, address.Store)
-    console.log('KAN set Store as minter')
+    await contract.deployed()
+
+    address.Store = contract.address
+    fs.writeFileSync(path, JSON.stringify(address, null, 4))
+    console.log("Contract deployed to: ", contract.address)
+
+    // const KAN = new hre.ethers.Contract(address.KAN, kanAbi, await hre.ethers.getSigner())
+    // await setMinter(KAN, address.Store)
+    // console.log('KAN set Store as minter')
 }
 
 // We recommend this pattern to be able to use async/await everywhere
